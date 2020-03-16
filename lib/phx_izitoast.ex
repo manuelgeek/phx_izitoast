@@ -89,7 +89,7 @@ defmodule PhxIzitoast do
   ]
 
   @doc """
-  Returns the css and Js files, tajes in @conn. Located in the `app.html.eex`
+  Inserts the CSS and Js files, takes in the `@conn`.Its is added  in the `app.html.eex` just before `</body>`
   """
   def izi_toast(conn) do
     # toasts = get_session(conn, :izitoast)
