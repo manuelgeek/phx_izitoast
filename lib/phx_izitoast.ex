@@ -1,8 +1,8 @@
 defmodule PhxIzitoast do
   @moduledoc """
   Documentation for `PhxIzitoast` - Phoenix Notification Package.
-  
-  ![img](./../priv/static/img/iziToast.png)
+
+  ![img](https://github.com/manuelgeek/phx_izitoast/raw/master/priv/static/img/iziToast.png)
 
   ## Configuration
   Add the below config to `config/config.exs`. This includes the default configurations.  
