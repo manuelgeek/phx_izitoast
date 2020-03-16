@@ -1,4 +1,5 @@
-# Phx Izitoast
+# Phx Izitoast -  Phoenix Notification package
+![img](priv/static/img/iziToast.png)
 
 This is a Phoenix Elixir IziToast Notification wrapper by [IziToast](https://izitoast.marcelodolza.com), A JavaScript Notifications Toast Library
 
@@ -34,7 +35,7 @@ config :phx_izitoast, :opts, # bottomRight, bottomLeft, topRight, topLeft, topCe
 
 Adding the JS Files to Layout  and Template. First import the Izitoast to your `layout_view.ex`
 ```elixir
-import Blog.Toast.IziToast
+import PhxIzitoast
 ```
 Add the below function to the bottom of your `app.html.eex` just efore the closing `</body>` tag . This will import the needed  `css` and `js` files.
 ```elixir
@@ -45,54 +46,87 @@ Add the below function to the bottom of your `app.html.eex` just efore the closi
 </body>
 ```
 
+Add the below code to your `app_web/endpoint.ex` file  just below the existing `plug Plug.Static` configuration.
+```elixir 
+plug Plug.Static, 
+    at: "/", 
+    from: {:phx_izitoast, "priv/static"}, 
+    gzip: false, 
+    only: ~w(css  js )
+```
+This adds the necessary js and css for iziToast
+
 ## Usage 
 Quickest way to use PhxIzitoast
 
 ```elixir 
 conn
-|> IziToast.message("message")
+|> PhxIzitoast.message("message")
 ```
+
+Usage in code would be like:
+
+  ```elixir
+  def create(conn, %{"category" => category_params}) do
+    slug = slugified_title(category_params["name"])
+    category_params = Map.put(category_params, "slug", slug)
+
+    case Categories.create_category(category_params) do
+      {:ok, _category} ->
+        conn
+        |> PhxIzitoast.success("Category", "Category created successfully")
+        |> redirect(to: Routes.category_path(conn, :index))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn 
+        |> PhxIzitoast.error("Category", "A Validation Error !!!")
+        |> render("new.html", changeset: changeset)
+    end
+  end
+  ```
+
+  WIth this you can remove the default notification alerts in `app.html.eex` and replace all your `put_flash/2` with `PhxIzitoast` .
         
 ### More functions include:
 
 ```elixir 
 conn 
-|> IziToast.success("title", "awesome", position: "bottomRight")
+|> PhxIzitoast.success("title", "awesome", position: "bottomRight")
 ```
 
 ```elixir 
 conn 
-|> IziToast.success("title", "awesome")
+|> PhxIzitoast.success("title", "awesome")
 ```
 
 ```elixir 
 conn 
-|> IziToast.info("Success", "awesome", position: "topRight")
+|> PhxIzitoast.info("Success", "awesome", position: "topRight")
 ```
 
 ``` elixir 
 conn 
-|> IziToast.info("Hey", "This is Info")
+|> PhxIzitoast.info("Hey", "This is Info")
 ```
 
 ```elixir 
 conn 
-|> IziToast.warning("title", "awesome", timeout: 1000)
+|> PhxIzitoast.warning("title", "awesome", timeout: 1000)
 ```
 
 ```elixir 
 conn 
-|> IziToast.warning("title", "not very awesome")
+|> PhxIzitoast.warning("title", "not very awesome")
 ```
 
 ```elixir 
 conn 
-|> IziToast.error("Arrow", "You've Failed this city", position: "bottomLeft")
+|> PhxIzitoast.error("Arrow", "You've Failed this city", position: "bottomLeft")
 ```
 
 ```elixir 
 conn 
-|> IziToast.info("Error 500", "Error Occured !!!")
+|> PhxIzitoast.info("Error 500", "Error Occured !!!")
 ``` 
 
 ## Documentation 
