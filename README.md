@@ -1,4 +1,6 @@
 # Phx Izitoast -  Phoenix Notification package
+![travis](https://travis-ci.com/manuelgeek/phx_izitoast.svg?branch=master)
+
 ![img](priv/static/img/iziToast.png)
 
 This is a Phoenix Elixir IziToast Notification wrapper by [IziToast](https://izitoast.marcelodolza.com), A JavaScript Notifications Toast Library
