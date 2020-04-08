@@ -47,6 +47,14 @@ defmodule PhxIzitoast do
   conn
   |> PhxIzitoast.message("message")
   ```
+  or 
+  ```elixir 
+  conn
+  |> PhxIzitoast.success("title", "message", opts // [])
+  |> PhxIzitoast.error("", "This is an Error message", [position: "center", timeout: 10000])
+  ```
+  The title can be left to `""` to ignore the toast title
+
 
   Usage in code would be like:
 

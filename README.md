@@ -65,6 +65,14 @@ Quickest way to use PhxIzitoast
 conn
 |> PhxIzitoast.message("message")
 ```
+or 
+```elixir 
+conn
+|> PhxIzitoast.success("title", "message", opts // [])
+|> PhxIzitoast.error("", "This is an Error message", [position: "center", timeout: 10000])
+```
+The title can be left to `""` to ignore the toast title
+
 
 Usage in code would be like:
 
@@ -103,7 +111,7 @@ conn
 
 ```elixir 
 conn 
-|> PhxIzitoast.info("Success", "awesome", position: "topRight")
+|> PhxIzitoast.info("Success", "awesome", [position: "topRight"])
 ```
 
 ``` elixir 
