@@ -96,6 +96,7 @@ defmodule PhxIzitoast do
     # toasts = conn.assigns[:izitoast]
     IO.inspect(toasts)
     IO.inspect("toasts")
+
     # conn |> fetch_session |> delete_session(:izitoast)
 
     # delete_session(conn, :izitoast)
@@ -112,15 +113,15 @@ defmodule PhxIzitoast do
     # toasts = conn.assigns[:izitoast]
 
     if(toasts) do
-    #   # delete_session(conn, :izitoast)
+      #   # delete_session(conn, :izitoast)
       opts = toasts ++ [opts]
-    conn = put_flash(conn, :izitoast, opts)
+      conn = put_flash(conn, :izitoast, opts)
 
       conn
-    #   #   assign(conn, :izitoast, opts)
+      #   #   assign(conn, :izitoast, opts)
     else
-    #   # delete_session(conn, :izitoast)
-    # #   assign(conn, :izitoast, [opts])
+      #   # delete_session(conn, :izitoast)
+      # #   assign(conn, :izitoast, [opts])
       conn = put_flash(conn, :izitoast, [opts])
       conn
     end
@@ -273,6 +274,6 @@ defmodule PhxIzitoast do
   ```
   """
   def clear_toast(conn) do
-      conn |> clear_flash()
+    conn |> clear_flash()
   end
 end
