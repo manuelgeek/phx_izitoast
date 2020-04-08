@@ -93,9 +93,8 @@ defmodule PhxIzitoast do
   """
   def izi_toast(conn) do
     toasts = get_flash(conn, :izitoast)
+
     # toasts = conn.assigns[:izitoast]
-    IO.inspect(toasts)
-    IO.inspect("toasts")
 
     # conn |> fetch_session |> delete_session(:izitoast)
 
