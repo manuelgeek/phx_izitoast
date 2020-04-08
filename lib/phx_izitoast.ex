@@ -5,7 +5,7 @@ defmodule PhxIzitoast do
   ![img](https://github.com/manuelgeek/phx_izitoast/raw/master/priv/static/img/iziToast.png)
 
   ## Configuration
-  Add the below config to `config/config.exs`. This includes the default configurations.  
+  Add the below config to `config/config.exs`. This includes the default configurations(optional).  
 
   ```elixir
     config :phx_izitoast, :opts, # bottomRight, bottomLeft, topRight, topLeft, topCenter, 
@@ -76,7 +76,7 @@ defmodule PhxIzitoast do
 
   import Phoenix.HTML.Tag
   import Phoenix.HTML
-  import Plug.Conn
+  import Phoenix.Controller
 
   @defaults [
     position: "bottomRight",
@@ -92,8 +92,14 @@ defmodule PhxIzitoast do
   Inserts the CSS and Js files, takes in the `@conn`.Its is added  in the `app.html.eex` just before `</body>`
   """
   def izi_toast(conn) do
-    # toasts = get_session(conn, :izitoast)
-    toasts = conn.assigns[:izitoast]
+    toasts = get_flash(conn, :izitoast)
+    # toasts = conn.assigns[:izitoast]
+    IO.inspect(toasts)
+    IO.inspect("toasts")
+
+    # conn |> fetch_session |> delete_session(:izitoast)
+
+    # delete_session(conn, :izitoast)
 
     if toasts do
       [toast_required_tags(), create_toast_tag(toasts)]
@@ -102,18 +108,26 @@ defmodule PhxIzitoast do
 
   @doc false
   def flash(conn, opts) do
-    # toasts = get_session(conn, :izitoast)
-    toasts = conn.assigns[:izitoast]
+    toasts = get_flash(conn, :izitoast)
+
+    # toasts = conn.assigns[:izitoast]
 
     if(toasts) do
+      #   # delete_session(conn, :izitoast)
       opts = toasts ++ [opts]
-      assign(conn, :izitoast, opts)
+      conn = put_flash(conn, :izitoast, opts)
+
+      conn
+      #   #   assign(conn, :izitoast, opts)
     else
-      assign(conn, :izitoast, [opts])
+      #   # delete_session(conn, :izitoast)
+      # #   assign(conn, :izitoast, [opts])
+      conn = put_flash(conn, :izitoast, [opts])
+      conn
     end
 
     # assign(conn, :izitoast, opts)
-    # put_session(conn, :message, "new stuff we just set in the session")
+    # put_flash(conn, :message, "new stuff we just set in the session")
   end
 
   @doc false
@@ -251,5 +265,15 @@ defmodule PhxIzitoast do
   def toast_required_tags do
     ~E(<link href="/css/iziToast.css" rel="stylesheet" />
         <script src="/js/iziToast.js"></script>)
+  end
+
+  @doc """
+  ```elixir 
+  conn 
+  |> PhxIzitoast.clear_toast()
+  ```
+  """
+  def clear_toast(conn) do
+    conn |> clear_flash()
   end
 end

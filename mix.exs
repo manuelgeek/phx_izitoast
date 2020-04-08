@@ -4,7 +4,7 @@ defmodule PhxIzitoast.MixProject do
   def project do
     [
       app: :phx_izitoast,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -45,7 +45,7 @@ defmodule PhxIzitoast.MixProject do
   defp deps do
     [
       {:phoenix_html, "~> 2.11"},
-      {:plug, "~> 1.1"},
+      {:phoenix, "~> 1.4.11"},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end

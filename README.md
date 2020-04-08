@@ -131,11 +131,16 @@ conn
 |> PhxIzitoast.info("Error 500", "Error Occured !!!")
 ``` 
 
+```elixir 
+conn 
+|> PhxIzitoast.clear_toast()
+``` 
+
 ## Documentation 
  The docs can
 be found at [https://hexdocs.pm/phx_izitoast](https://hexdocs.pm/phx_izitoast).
 
- ## AUthor 
+ ## Author 
 
 [ManuEl Geek](https://manuel.appslab.co.ke)
 
