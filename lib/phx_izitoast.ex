@@ -87,7 +87,7 @@ defmodule PhxIzitoast do
   import Phoenix.Controller
 
   @defaults [
-    position: "bottomRight",
+    position: "topRight",
     theme: "light",
     timeout: 5000,
     close: true,

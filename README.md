@@ -22,7 +22,7 @@ end
 
 ## Configuration
 
-Add the below config to `config/config.exs`. This includes the default configurations.  
+Add the below config to `config/config.exs`. This includes the default configurations(optional).  
 
 ```elixir
 config :phx_izitoast, :opts, # bottomRight, bottomLeft, topRight, topLeft, topCenter, 
