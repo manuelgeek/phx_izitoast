@@ -50,7 +50,7 @@ defmodule PhxIzitoast do
   or 
   ```elixir 
   conn
-  |> PhxIzitoast.success("title", "message", opts // [])
+  |> PhxIzitoast.success("title", "message", opts \\ [])
   |> PhxIzitoast.error("", "This is an Error message", [position: "center", timeout: 10000])
   ```
   The title can be left to `""` to ignore the toast title
@@ -66,7 +66,7 @@ defmodule PhxIzitoast do
     case Categories.create_category(category_params) do
       {:ok, _category} ->
         conn
-        |> PhxIzitoast.success("Category", "Category created successfully")
+        |> PhxIzitoast.success("Category", " created successfully")
         |> redirect(to: Routes.category_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->

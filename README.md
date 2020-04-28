@@ -1,11 +1,20 @@
 # Phx Izitoast -  Phoenix Notification package
 ![travis](https://travis-ci.com/manuelgeek/phx_izitoast.svg?branch=master)
+![hex badge](https://img.shields.io/hexpm/dt/phx_izitoast)
 
 ![img](priv/static/img/iziToast.png)
 
 This is a Phoenix Elixir IziToast Notification wrapper by [IziToast](https://izitoast.marcelodolza.com), A JavaScript Notifications Toast Library
 
-**TODO: Add description**
+## Table of contents
+ - [Installation](#installation)
+ - [Configuration](#configuration)
+ - [Usage](#usage)
+ - [Documentation](#documentation)
+ - [About Me](#about-me)
+ - [Licence](#licence)
+ 
+ ## Set up 
 
 ## Installation
 
@@ -68,7 +77,7 @@ conn
 or 
 ```elixir 
 conn
-|> PhxIzitoast.success("title", "message", opts // [])
+|> PhxIzitoast.success("title", "message", opts \\ [])
 |> PhxIzitoast.error("", "This is an Error message", [position: "center", timeout: 10000])
 ```
 The title can be left to `""` to ignore the toast title
@@ -84,7 +93,7 @@ Usage in code would be like:
     case Categories.create_category(category_params) do
       {:ok, _category} ->
         conn
-        |> PhxIzitoast.success("Category", "Category created successfully")
+        |> PhxIzitoast.success("Category", " created successfully")
         |> redirect(to: Routes.category_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -148,12 +157,26 @@ conn
  The docs can
 be found at [https://hexdocs.pm/phx_izitoast](https://hexdocs.pm/phx_izitoast).
 
- ## Author 
+ ## About Me 
 
-[ManuEl Geek](https://manuel.appslab.co.ke)
+<p align="center"><img src="https://magak.me/assets/images/Geek-logo.png" width="150">
 
-## Contributing & Licence
+<a target="_blank" href="https://magak.me">Magak Emmanuel</a>
+</p>
+
+## Licence
 
 Phx Izitoast is released under [MIT License](https://github.com/appcues/exsentry/blob/master/LICENSE.txt)
+
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](#)
+
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source-200x33.png?v=103)](#)
+
+
+Happy coding, Star before Fork 😊💪💯
+
 
 
