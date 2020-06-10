@@ -157,7 +157,7 @@ conn
  The docs can
 be found at [https://hexdocs.pm/phx_izitoast](https://hexdocs.pm/phx_izitoast).
 
- ## About Me 
+## About Me 
 
 <p align="center"><img src="https://magak.me/assets/images/Geek-logo.png" width="150">
 
@@ -167,9 +167,6 @@ be found at [https://hexdocs.pm/phx_izitoast](https://hexdocs.pm/phx_izitoast).
 ## Licence
 
 Phx Izitoast is released under [MIT License](https://github.com/appcues/exsentry/blob/master/LICENSE.txt)
-
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](#)
 
