@@ -23,3 +23,4 @@ erl_crash.dump
 phx_izitoast-*.tar
 
 .elixir_ls
+.idea

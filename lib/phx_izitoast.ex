@@ -5,10 +5,10 @@ defmodule PhxIzitoast do
   ![img](https://github.com/manuelgeek/phx_izitoast/raw/master/priv/static/img/iziToast.png)
 
   ## Configuration
-  Add the below config to `config/config.exs`. This includes the default configurations(optional).  
+  Add the below config to `config/config.exs`. This includes the default configurations(optional).
 
   ```elixir
-    config :phx_izitoast, :opts, # bottomRight, bottomLeft, topRight, topLeft, topCenter, 
+    config :phx_izitoast, :opts, # bottomRight, bottomLeft, topRight, topLeft, topCenter,
   position: "topRight", # dark,
   theme: "light",
   timeout: 5000,
@@ -32,23 +32,23 @@ defmodule PhxIzitoast do
   ```
 
   Add the below code to your `app_web/endpoint.ex` file  just below the existing `plug Plug.Static` configuration.
-  ```elixir 
-  plug Plug.Static, 
-    at: "/", 
-    from: {:phx_izitoast, "priv/static"}, 
-    gzip: false, 
+  ```elixir
+  plug Plug.Static,
+    at: "/",
+    from: {:phx_izitoast, "priv/static"},
+    gzip: false,
     only: ~w(css  js )
   ```
   This adds the necessary js and css for iziToast
 
-  ## Usage 
+  ## Usage
   Quickest way to use PhxIzitoast
-  ```elixir 
+  ```elixir
   conn
   |> PhxIzitoast.message("message")
   ```
-  or 
-  ```elixir 
+  or
+  ```elixir
   conn
   |> PhxIzitoast.success("title", "message", opts \\ [])
   |> PhxIzitoast.error("", "This is an Error message", [position: "center", timeout: 10000])
@@ -70,7 +70,7 @@ defmodule PhxIzitoast do
         |> redirect(to: Routes.category_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        conn 
+        conn
         |> PhxIzitoast.error("Category", "A Validation Error !!!")
         |> render("new.html", changeset: changeset)
     end
@@ -152,8 +152,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, color, [])
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.message("awesome things only")
   ```
   """
@@ -161,8 +161,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, " ", message, "blue", [])
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.success("title", "awesome", position: "bottomRight")
   ```
   """
@@ -170,8 +170,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "green", opts)
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.success("title", "awesome")
   ```
   """
@@ -179,8 +179,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "green", [])
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.info("Success", "awesome", position: "topRight")
   ```
   """
@@ -188,8 +188,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "blue", opts)
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.info("Hey", "This is Info")
   ```
   """
@@ -197,8 +197,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "blue", [])
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.warning("title", "awesome", timeout: 1000)
   ```
   """
@@ -206,8 +206,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "yellow", opts)
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.warning("title", "not very awesome")
   ```
   """
@@ -215,8 +215,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "yellow", [])
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.error("Arrow", "You've Failed this city", position: "bottomLeft")
   ```
   """
@@ -224,8 +224,8 @@ defmodule PhxIzitoast do
     do: make_toast(conn, title, message, "red", opts)
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.info("Error 500", "Error Occured !!!")
   ```
   """
@@ -270,13 +270,13 @@ defmodule PhxIzitoast do
 
   @doc false
   def toast_required_tags do
-    ~E(<link href="/css/iziToast.css" rel="stylesheet" />
-        <script src="/js/iziToast.js"></script>)
+    raw("<link href='/css/iziToast.css' rel='stylesheet' />
+        <script src='/js/iziToast.js'></script>")
   end
 
   @doc """
-  ```elixir 
-  conn 
+  ```elixir
+  conn
   |> PhxIzitoast.clear_toast()
   ```
   """

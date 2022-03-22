@@ -24,7 +24,7 @@ by adding `phx_izitoast` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:phx_izitoast, "~> 0.1.1"}
+    {:phx_izitoast, "~> 0.1.2"}
   ]
 end
 ```
