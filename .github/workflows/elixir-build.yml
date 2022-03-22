@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    name: Build and test
+    name: Compile Package
     runs-on: ubuntu-latest
 
     steps:
@@ -27,5 +27,5 @@ jobs:
         restore-keys: ${{ runner.os }}-mix-
     - name: Install dependencies
       run: mix deps.get
-    - name: Build
-      run: mix build
+    - name: Compile
+      run: mix compile
